@@ -11,7 +11,7 @@ An MQTT Server to share MSI Afterburner Statistics
 
 ## What is does not do
 - Change / Customize / Interrup your normal OST settings on Riva Tunner Statistics Server
-- Display any content for you to monitor. To do this use AfterburnerStats for Android
+- Display any content for you to monitor. To do this use AfterburnerStats for Android. Comming soon!
 
 ## How to contribute
 Pull requests are accepted by anyone willing to partiticipate.
