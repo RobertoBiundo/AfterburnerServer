@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using AfterburnerServer.Models;
@@ -28,6 +30,7 @@ namespace AfterburnerServer.Networking
 
 
         #region VARIABLES
+	    public string IPAddress { get; set; }
         private static HardwareMonitor _hardwareMonitor;
         private static IMqttServer _mqttServer;
         private static Thread _infoPublishThread;
@@ -35,18 +38,21 @@ namespace AfterburnerServer.Networking
 
 
         #region CONSTRUCTORS
-        public Server( string url, HardwareMonitor hardwareMonitor )
+        public Server( HardwareMonitor hardwareMonitor )
         {
             _hardwareMonitor = hardwareMonitor;
-
-            var options = new MqttServerOptions();
-            _mqttServer = new MqttFactory().CreateMqttServer();
-            _mqttServer.StartAsync(options);
-            
-            RegisterForRequests( );
-            RegisterPeriodicInfoPublish();
-
+	        IPAddress = GetLocalIPAddress();
         }
+
+	    public void StartServer()
+	    {
+		    var options = new MqttServerOptions();
+		    _mqttServer = new MqttFactory().CreateMqttServer();
+		    _mqttServer.StartAsync(options);
+            
+		    RegisterForRequests( );
+		    RegisterPeriodicInfoPublish();
+	    }
 
         public void StopServer()
         {
@@ -56,6 +62,19 @@ namespace AfterburnerServer.Networking
 
 
         #region SERVER EVENTS AND METHODS
+	    public static string GetLocalIPAddress()
+	    {
+		    var host = Dns.GetHostEntry(Dns.GetHostName());
+		    foreach (var ip in host.AddressList)
+		    {
+			    if (ip.AddressFamily == AddressFamily.InterNetwork)
+			    {
+				    return ip.ToString();
+			    }
+		    }
+		    throw new Exception("No network adapters with an IPv4 address in the system!");
+	    }
+
         private static void SendMessage( string topicName, string message )
         {
             var package = new MqttApplicationMessageBuilder()
@@ -112,7 +131,7 @@ namespace AfterburnerServer.Networking
         #region THREAD METHODS
         private static void PublishInfo()
         {
-            while (Program.Alive)
+            while (Program.ServerIsAlive)
             {
                 try
                 {

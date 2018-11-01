@@ -1,45 +1,25 @@
 ﻿using System;
-using System.Diagnostics;
-using MSI.Afterburner;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using AfterburnerServer.Networking;
+using MSI.Afterburner;
 
 namespace AfterburnerServer
 {
-    internal class Program
-    {
-        private const string SERVER_URL = "http://localhost:3000";
+	static class Program
+	{
+		public static bool ServerIsAlive { get; set; }
 
-        public static bool Alive { get; set; }
-        public static Process NodeProcess;
-
-        private static void Main(string[] args)
-        {
-            Alive = true;
-
-            // Connect to HardwareMonitor shared memory
-            var hardwareMonitor = new HardwareMonitor();
-
-            // Start the server
-            new Server(SERVER_URL, hardwareMonitor);
-
-            //                // show a data source monitor several times
-            //                HardwareMonitorEntry framerate = hardwareMonitor.GetEntry(HardwareMonitor.GPU_GLOBAL_INDEX, MONITORING_SOURCE_ID.FRAMERATE);
-            //                if (framerate != null)
-            //                {
-            //                    Console.WriteLine("***** FRAMERATE *****");
-            //                    for(var i = 0; i < 10; i++)
-            //                    {
-            //                        Console.WriteLine(framerate.Data);
-            //                        System.Threading.Thread.Sleep(1000);
-            //                        hardwareMonitor.ReloadEntry(framerate);
-            //                    }
-            //                }
-
-            Console.WriteLine("SERVER IS RUNNING");
-            Console.ReadKey();
-
-            // Stop the stat sending thread
-            Alive = false;
-        }
-    }
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		static void Main( )
+		{
+			Application.SetCompatibleTextRenderingDefault( false );
+			Application.Run( new MainForm( ) );
+		}
+	}
 }

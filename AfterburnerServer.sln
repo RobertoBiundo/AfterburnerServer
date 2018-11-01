@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfterburnerServer", "AfterburnerServer\AfterburnerServer.csproj", "{95A0ADDE-0695-4F2D-BB27-B1766837C3A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfterburnerServer", "AfterburnerServer\AfterburnerServer.csproj", "{7331EB59-D89C-4DB2-ACD8-553762430835}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{95A0ADDE-0695-4F2D-BB27-B1766837C3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95A0ADDE-0695-4F2D-BB27-B1766837C3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95A0ADDE-0695-4F2D-BB27-B1766837C3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95A0ADDE-0695-4F2D-BB27-B1766837C3A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7331EB59-D89C-4DB2-ACD8-553762430835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7331EB59-D89C-4DB2-ACD8-553762430835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7331EB59-D89C-4DB2-ACD8-553762430835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7331EB59-D89C-4DB2-ACD8-553762430835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5D757DAE-B072-4914-9176-46AFD541AC38}
+		SolutionGuid = {251F9C70-E852-4693-85B5-240D621C83E6}
 	EndGlobalSection
 EndGlobal
